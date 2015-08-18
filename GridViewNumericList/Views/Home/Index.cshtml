@@ -1,0 +1,16 @@
+﻿@using GridMvc.Html
+@model IEnumerable<GridViewNumericList.Models.Car>
+
+@{
+    ViewBag.Title = "Car List";
+}
+
+<h2>Car List</h2>
+<div class="row">
+    @Html.Grid(Model).Columns(col =>
+{
+    col.Add(c => c.Id).Titled("Id").Filterable(true);
+    col.Add(c => c.Model).Titled("Model");
+    col.Add(c => c.Year).Titled("Year");
+}).WithPaging((int)ViewBag.ItemsPerPage).Sortable(true).Filterable(true).WithMultipleFilters()
+</div>
